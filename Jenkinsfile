@@ -6,7 +6,7 @@ pipeline {
         stage('Code') {
             steps {
                 script{
-                    gitpull("https://github.com/PranatPattankude/HTML-Project.git", "main")
+                    gitpull("https://github.com/PranatPattankude/HTML-CICD-Project.git", "main")
                 }
                 
             }
