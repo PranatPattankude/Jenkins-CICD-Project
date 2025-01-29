@@ -4,4 +4,4 @@ services:
   apache-app:
     image: pranatsp/apache-app:latest
     ports:
-      - "80:80"
+      - "81:80"
