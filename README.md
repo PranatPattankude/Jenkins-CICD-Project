@@ -51,9 +51,10 @@ The `Jenkinsfile` defines the following pipeline stages:
 ## Usage
 
 ### 1. Clone the Repository
+  
       ```bash
-         git clone https://github.com/PranatPattankude/Jenkins-CICD-Project.git
-         cd Jenkins-CICD-Project
+      git clone https://github.com/PranatPattankude/Jenkins-CICD-Project.git
+      cd Jenkins-CICD-Project
 
 
 ### Jenkins CI/CD Pipeline with GitHub Webhooks
