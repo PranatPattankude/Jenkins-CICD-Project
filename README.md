@@ -55,3 +55,46 @@ The `Jenkinsfile` defines the following pipeline stages:
 ```bash
    git clone https://github.com/PranatPattankude/Jenkins-CICD-Project.git
    cd Jenkins-CICD-Project
+
+### Jenkins CI/CD Pipeline with GitHub Webhooks
+
+This repository contains the configuration for a Jenkins pipeline that automates the build, push, and deployment of Docker containers and images using Docker Compose. The pipeline is triggered via GitHub Webhooks, ensuring an automated process every time changes are pushed to the repository.
+
+## Steps for Setup and Configuration
+
+### 1. Configure Git Hooks (for Automation)
+
+#### GitHub Hook Trigger for GITScm Polling in Jenkins
+
+- Open your Jenkins job configuration.
+- In the **Source Code Management** section, select **Git**.
+- Under **Repository URL**, specify the GitHub repository.
+- In **Build Triggers**, check the option for **GitHub hook trigger for GITScm polling**.
+
+#### Configure GitHub Webhooks
+
+- Navigate to your GitHub repository settings.
+- Go to **Webhooks** > **Add webhook**.
+- Set the **Payload URL** to `http://<JENKINS_URL>/github-webhook/`.
+- Select **application/x-www-form-urlencoded** as the **Content type**.
+- Choose **Just the push event**.
+- Click **Add webhook**.
+
+### 2. Run the Pipeline
+
+- Ensure that Jenkins is configured with the necessary **shared library** and **credentials** for your repository.
+- Create a new Jenkins pipeline job and point it to this repository.
+- You can trigger the pipeline manually or let it be automatically triggered through the GitHub webhook on each code push.
+
+### 3. Automated Deployment
+
+- The pipeline will automatically:
+  - Build the project.
+  - Push Docker containers and images.
+  - Deploy the containers using **Docker Compose**.
+  
+No manual deployment is required, as everything is handled by the pipeline.
+
+## Conclusion
+
+This setup allows for seamless automation of building, pushing, and deploying containers, saving time and ensuring consistency across environments.
