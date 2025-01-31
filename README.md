@@ -1,49 +1,57 @@
 # Jenkins CI/CD Project
 
-This project demonstrates a CI/CD pipeline using Jenkins with a master-worker setup and a shared library. The shared library is hosted at [jenkins-shared-lib](https://github.com/PranatPattankude/jenkins-shared-lib.git).
+This project sets up a complete CI/CD pipeline using Jenkins with a master-worker setup. It builds and deploys a Dockerized application using Docker Compose, pushing the image to Docker Hub. The pipeline is automated using Git hooks.
 
-## Project Structure
+## Project Features
 
-- **Jenkinsfile**: Defines the pipeline stages and integrates the shared library.
-- **src/**: Contains the source code of the application.
-- **tests/**: Includes test cases for the application.
+- **Jenkins Master-Worker Setup**: Distributed build execution using Jenkins agents.
+- **Jenkins Shared Library**: Reusable pipeline functions from [jenkins-shared-lib](https://github.com/PranatPattankude/jenkins-shared-lib.git).
+- **Docker Build and Deployment**: Containerized application using Docker and Docker Compose.
+- **Docker Hub Integration**: Pushes built Docker images to Docker Hub.
+- **Git Hooks for Automation**: Automates pipeline execution upon repository changes.
 
 ## Prerequisites
 
-- **Jenkins**: Ensure Jenkins is installed and configured with master and worker nodes.
-- **Git**: Installed and configured on both Jenkins master and worker nodes.
-- **Credentials**: Set up in Jenkins for accessing the shared library and any other necessary repositories.
+- **Jenkins**: Installed and configured with a master and worker nodes.
+- **Docker & Docker Compose**: Installed on Jenkins worker nodes.
+- **Git**: Installed and configured for Git hooks.
+- **Docker Hub Account**: For storing and retrieving images.
+- **Jenkins Credentials**: Configured for Git and Docker Hub authentication.
 
 ## Jenkins Configuration
 
-1. **Shared Library Setup**:
-   - Navigate to `Manage Jenkins` > `Configure System` > `Global Pipeline Libraries`.
-   - Add a new library with the following details:
-     - **Name**: `jenkins-shared-lib`
-     - **Default Version**: Specify the branch or tag to use, e.g., `main`.
-     - **Retrieval Method**: Modern SCM
-     - **Source Code Management**: Git
-     - **Project Repository**: `https://github.com/PranatPattankude/jenkins-shared-lib.git`
-     - **Credentials**: Select the appropriate credentials if required.
+### 1. Shared Library Setup
 
-2. **Credentials Setup**:
-   - Navigate to `Manage Jenkins` > `Manage Credentials`.
-   - Add credentials for accessing the shared library and any other external systems.
+- Navigate to `Manage Jenkins` > `Configure System` > `Global Pipeline Libraries`.
+- Add a new library:
+  - **Name**: `jenkins-shared-lib`
+  - **Default Version**: `main`
+  - **Retrieval Method**: Modern SCM
+  - **Source Code Management**: Git
+  - **Repository URL**: `https://github.com/PranatPattankude/jenkins-shared-lib.git`
+  - **Credentials**: Select the appropriate stored credentials.
 
-## Pipeline Overview
+### 2. Credentials Setup
 
-The Jenkins pipeline (`Jenkinsfile`) includes the following stages:
+- Navigate to `Manage Jenkins` > `Manage Credentials`.
+- Add credentials for:
+  - Git authentication (if required).
+  - Docker Hub login (username/password or token).
 
-1. **Checkout**: Retrieves the latest code from the repository.
-2. **Build**: Compiles the application.
-3. **Test**: Executes unit and integration tests.
-4. **Deploy**: Deploys the application to the target environment.
+## CI/CD Pipeline Overview
 
-The pipeline utilizes the shared library for common functions and steps, promoting reusability and maintainability.
+The `Jenkinsfile` defines the following pipeline stages:
+
+1. **Checkout**: Clones the latest code from the repository.
+2. **Build Docker Image**: Builds a Docker image for the application.
+3. **Push to Docker Hub**: Tags and pushes the image to Docker Hub.
+4. **Deploy using Docker Compose**: Pulls the latest image and deploys the application using Docker Compose.
+5. **Automate with Git Hooks**: Triggers the pipeline on repository updates.
 
 ## Usage
 
-1. **Clone the Repository**:
-   ```bash
+### 1. Clone the Repository
+
+```bash
    git clone https://github.com/PranatPattankude/Jenkins-CICD-Project.git
    cd Jenkins-CICD-Project
