@@ -52,7 +52,7 @@ The `Jenkinsfile` defines the following pipeline stages:
 
 ### 1. Clone the Repository
 
-2. **Review and validate the configuration**:
+1. **Clone the code using this command**:
    ```bash
    git clone https://github.com/PranatPattankude/Jenkins-CICD-Project.git
    cd Jenkins-CICD-Project
