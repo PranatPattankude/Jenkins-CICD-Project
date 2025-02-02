@@ -11,7 +11,10 @@ output "master_instance_ip_url" {
 
 output "copy_master_jenkins_password" {
   description = "Command to get Jenkins Password file"
-  value = "scp -i terra_key ubuntu@${aws_instance.AppServer.public_ip}:/tmp/jenkins_password.txt master_jenkins_password.txt"  
+  value       = <<EOT
+ssh -i terra_key ubuntu@${aws_instance.AppServer.public_ip} "sudo cat /var/lib/jenkins/secrets/initialAdminPassword" > master_jenkins_password.txt
+EOT
+
 }
 
 output "SSH_connect_master" {
@@ -31,12 +34,15 @@ output "worker_instance_ip_url" {
   value = "http://${aws_instance.AppServer2.public_ip}:8080"
 }
 
-output "copy_worker_jenkins_password" {
+output "copy_master_jenkins_password" {
   description = "Command to get Jenkins Password file"
-  value = "scp -i terra_key ubuntu@${aws_instance.AppServer2.public_ip}:/tmp/jenkins_password.txt workwe_jenkins_password.txt"  
+  value       = <<EOT
+ssh -i terra_key ubuntu@${aws_instance.AppServer2.public_ip} "sudo cat /var/lib/jenkins/secrets/initialAdminPassword" > worker_jenkins_password.txt
+EOT
+
 }
 
 output "SSH_connect_worker" {
   description = "Command to connect server"
   value = "ssh -i terra_key ubuntu@${aws_instance.AppServer2.public_ip}"  
-}
+} 
