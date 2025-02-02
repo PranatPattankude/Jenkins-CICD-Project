@@ -21,9 +21,6 @@ resource "aws_instance" "AppServer" {
   sudo apt-get install -y jenkins
   sudo systemctl start jenkins
   sudo systemctl enable jenkins
-  sleep 10
-  JENKINS_PASSWORD=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
-  echo $JENKINS_PASSWORD > /tmp/jenkins_password.txt
   EOF
 )
 
@@ -56,9 +53,6 @@ resource "aws_instance" "AppServer2" {
   sudo apt-get install -y docker.io
   sudo usermod -aG docker $USER && newgrp docker
   sudo apt-get install dovker-compose
-  sleep 10
-  JENKINS_PASSWORD=$(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)
-  echo $JENKINS_PASSWORD > /tmp/jenkins_password.txt
   EOF
 )
 
