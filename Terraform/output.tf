@@ -34,7 +34,7 @@ output "worker_instance_ip_url" {
   value = "http://${aws_instance.AppServer2.public_ip}:8080"
 }
 
-output "copy_master_jenkins_password" {
+output "copy_worker_jenkins_password" {
   description = "Command to get Jenkins Password file"
   value       = <<EOT
 ssh -i terra_key ubuntu@${aws_instance.AppServer2.public_ip} "sudo cat /var/lib/jenkins/secrets/initialAdminPassword" > worker_jenkins_password.txt
