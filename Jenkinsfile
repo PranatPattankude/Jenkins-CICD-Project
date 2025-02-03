@@ -13,9 +13,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                script{
-                    build("apache-app", "latest")
-                }
+                sh "sudo docker build -t apache-app:latest ."
             }
         }
         stage('PushToDocker') {
