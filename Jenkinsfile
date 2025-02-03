@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "docker build -t apache-app:latest ."
+                build("apache-app", "latest")
             }
         }
         stage('PushToDocker') {
