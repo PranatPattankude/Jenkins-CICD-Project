@@ -13,7 +13,9 @@ pipeline {
         }
         stage('Build') {
             steps {
-                build("apache-app", "latest")
+                script{
+                    build("apache-app", "latest")
+                }
             }
         }
         stage('PushToDocker') {
