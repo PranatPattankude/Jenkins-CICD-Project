@@ -37,30 +37,18 @@ pipeline {
     post {
         success {
             script {
-                def logs = currentBuild.rawBuild.getLog(100)
-                emailext(
-                    subject: "Build Success: ${currentBuild.fullDisplayName}",
-                    body: """
-                        The build has completed successfully.
-
-                        ${logs}
-                    """,
-                    to: "${env.RECIPIENTS}"
-                )
+                echo "Build Successful!"
+                echo "Build Number: ${env.BUILD_NUMBER}"
+                echo "Build URL: ${env.BUILD_URL}"
+                echo "Current build result: ${currentBuild.result}"
             }
         }
         failure {
             script {
-                def logs = currentBuild.rawBuild.getLog(100)
-                emailext(
-                    subject: "Build Failed: ${currentBuild.fullDisplayName}",
-                    body: """
-                        The build has failed. Please check the logs for more details.
-
-                        ${logs}
-                    """,
-                    to: "${env.RECIPIENTS}"
-                )
+                echo "Build Failed!"
+                echo "Build Number: ${env.BUILD_NUMBER}"
+                echo "Build URL: ${env.BUILD_URL}"
+                echo "Current build result: ${currentBuild.result}"
             }
         }
     }
