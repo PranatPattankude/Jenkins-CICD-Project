@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Code') {
             steps {
+                sh "whoami"
                 script{
                     gitpull("https://github.com/PranatPattankude/Jenkins-CICD-Project.git", "main")
                 }
