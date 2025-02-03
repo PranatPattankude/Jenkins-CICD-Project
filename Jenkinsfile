@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh "sudo docker build -t apache-app:latest ."
+                sh "docker build -t apache-app:latest ."
             }
         }
         stage('PushToDocker') {
