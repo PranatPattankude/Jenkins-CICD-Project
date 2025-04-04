@@ -1,4 +1,4 @@
-# Jenkins CI/CD Project
+# CI/CD Project
 
 This project sets up a complete CI/CD pipeline using Jenkins with a master-worker setup. It builds and deploys a Dockerized application using Docker Compose, pushing the image to Docker Hub. The pipeline is automated using Git hooks.
 
