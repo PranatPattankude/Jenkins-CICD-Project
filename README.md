@@ -4,6 +4,7 @@ This project sets up a complete CI/CD pipeline using Jenkins with a master-worke
 
 ## Project Features
 
+- **Terraform for Infrastructure Automation**: Automates provisioning and management of infrastructure resources.
 - **Jenkins Master-Worker Setup**: Distributed build execution using Jenkins agents.
 - **Jenkins Shared Library**: Reusable pipeline functions from [jenkins-shared-lib](https://github.com/PranatPattankude/jenkins-shared-lib.git).
 - **Docker Build and Deployment**: Containerized application using Docker and Docker Compose.
