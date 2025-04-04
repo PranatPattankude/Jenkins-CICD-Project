@@ -13,6 +13,8 @@ This project sets up a complete CI/CD pipeline using Jenkins with a master-worke
 
 ## Prerequisites
 
+- **Terraform**: Installed.
+- **Cloud Provider Credentials**: Configured (AWS)
 - **Jenkins**: Installed and configured with a master and worker nodes.
 - **Docker & Docker Compose**: Installed on Jenkins worker nodes.
 - **Git**: Installed and configured for Git hooks.
