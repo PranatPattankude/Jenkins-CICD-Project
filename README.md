@@ -21,6 +21,44 @@ This project sets up a complete CI/CD pipeline using Jenkins with a master-worke
 - **Docker Hub Account**: For storing and retrieving images.
 - **Jenkins Credentials**: Configured for Git and Docker Hub authentication.
 
+
+## Terraform Configuration
+
+### Terraform Files Structure
+```
+terraform/
+├── main.tf              # Main Terraform configuration
+├── variables.tf         # Variables used in the configuration
+├── provider.tf          # Cloud provider details
+├── ec2_server.tf        # EC2 instance configuration
+├── security_group.tf    # Security group configuration
+├── vpc.tf               # VPC setup and networking
+├── outputs.tf           # Outputs for reference
+```
+
+### Deploying with Terraform
+1. **Initialize Terraform**
+   ```sh
+   terraform init
+   ```
+2. **Plan Deployment**
+   ```sh
+   terraform plan
+   ```
+3. **Apply Deployment**
+   ```sh
+   terraform apply -auto-approve
+   ```
+4. **Verify Deployment**
+   ```sh
+   terraform output
+   ```
+5. **Destroy (if needed)**
+   ```sh
+   terraform destroy -auto-approve
+   ```
+
+
 ## Jenkins Configuration
 
 ### 1. Shared Library Setup
