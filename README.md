@@ -53,6 +53,19 @@ terraform/
    ```sh
    terraform output
    ```
+### Retrieving Jenkins Initial Passwords
+Run the following commands to retrieve the Jenkins initial admin passwords for both the master and worker nodes:
+
+```sh
+# Get Jenkins Master initial password
+ssh -i terra_key ubuntu@$(terraform output -raw AppServer_public_ip) "sudo cat /var/lib/jenkins/secrets/initialAdminPassword" > master_jenkins_password.txt
+
+# Get Jenkins Worker initial password
+ssh -i terra_key ubuntu@$(terraform output -raw AppServer2_public_ip) "sudo cat /var/lib/jenkins/secrets/initialAdminPassword" > worker_jenkins_password.txt
+```
+
+This will save the initial admin passwords to `master_jenkins_password.txt` and `worker_jenkins_password.txt`. 
+
 5. **Destroy (if needed)**
    ```sh
    terraform destroy -auto-approve
